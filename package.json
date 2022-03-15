@@ -9,8 +9,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint .",
-    "test": "jest --coverage"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
