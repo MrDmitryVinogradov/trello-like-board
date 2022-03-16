@@ -60,8 +60,8 @@ export default class Board {
     column.querySelector('.close-editor').addEventListener('click', () => {
       editor.remove();
       column.querySelector('.add-task').style.display = 'block';
+      this.saveToLocalStorage();
     });
-    this.saveToLocalStorage();
   }
 
   createCard(column) {
@@ -78,8 +78,8 @@ export default class Board {
       column.querySelector('.tasks-list').appendChild(card);
       editor.remove();
       column.querySelector('.add-task').style.display = 'block';
+      this.saveToLocalStorage();
     }
-    this.saveToLocalStorage();
   }
 
   removeCard() {
@@ -122,7 +122,8 @@ export default class Board {
           this.dragging.style = null;
           this.dragging = null;
           copy.remove();
-          return false;
+          this.saveToLocalStorage();
+          return null;
         }
         const closestItem = document.elementFromPoint(evt.clientX, evt.clientY);
         if (!closestItem.closest('li')) {
@@ -131,13 +132,15 @@ export default class Board {
           closestItem.closest('.column').querySelector('ul').appendChild(copy);
           this.dragging.remove();
           this.dragging = null;
-          return false;
+          this.saveToLocalStorage();
+          return null;
         }
         if (closestItem.closest('li')) {
           copy.hidden = false;
           closestItem.closest('li').insertAdjacentElement('beforebegin', copy);
           this.dragging.remove();
           this.dragging = null;
+          this.saveToLocalStorage();
         }
         return null;
       }
