@@ -86,9 +86,9 @@ export default class Board {
     this.field.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('remove-card')) {
         evt.target.closest('li').remove();
+        this.saveToLocalStorage();
       }
     });
-    this.saveToLocalStorage();
   }
 
   moveCards() {
