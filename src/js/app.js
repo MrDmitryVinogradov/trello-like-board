@@ -3,4 +3,4 @@ import Board from './Board';
 
 const app = new Board();
 
-app.renderField();
+app.init();
