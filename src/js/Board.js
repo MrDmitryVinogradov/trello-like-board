@@ -9,9 +9,9 @@ export default class Board {
 
   init() {
     this.renderField();
-    this.moveCards();
-    this.removeCard();
     this.loadFromLocalStorage();
+    this.removeCard();
+    this.moveCards();
   }
 
   renderField() {
